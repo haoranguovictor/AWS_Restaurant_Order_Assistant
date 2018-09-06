@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
+        <link rel="stylesheet" type="text/css" href="vendors/css/ionicons.css">
+        <link rel="stylesheet" type="text/css" href="vendors/css/animate.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/queries.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css">
+        
+        
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+        <title>Omnifood</title>
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/resources/favicons/manifest.json">
+        <link rel="mask-icon" href="/resources/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/resources/favicons/favicon.ico">
+        <meta name="msapplication-config" content="/resources/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.203.0.min.js"></script>
+        <script src="./resources/js/aws-cognito-sdk.min.js"></script>
+        <script src="./resources/amazon-cognito-identity.min.js"></script>
+        <script type="text/javascript" src="./resources/lib/axios/dist/axios.standalone.js"></script>
+        <script type="text/javascript" src="./resources/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+        <script type="text/javascript" src="./resources/lib/CryptoJS/rollups/sha256.js"></script>
+        <script type="text/javascript" src="./resources/lib/CryptoJS/components/hmac.js"></script>
+        <script type="text/javascript" src="./resources/lib/CryptoJS/components/enc-base64.js"></script>
+        <script type="text/javascript" src="./resources/lib/url-template/url-template.js"></script>
+        <script type="text/javascript" src="./resources/lib/apiGatewayCore/sigV4Client.js"></script>
+        <script type="text/javascript" src="./resources/lib/apiGatewayCore/apiGatewayClient.js"></script>
+        <script type="text/javascript" src="./resources/lib/apiGatewayCore/simpleHttpClient.js"></script>
+        <script type="text/javascript" src="./resources/lib/apiGatewayCore/utils.js"></script>
+        <script type="text/javascript" src="./resources/js/apigClient.js"></script>
+
+        <script src="./resources/js/app.js"></script>
+        <script src="./resources/js/code2token.js"></script>
+        <script src="./resources/js/integrateuserpool.js"></script>
+        <script src="./resources/js/saveImage.js"></script>
+        <script type="text/javascript" src="./resources/js/star.js"></script>
+        <script type="text/javascript" src="./resources/js/Quantity.js"></script>
+    </head>
+    <body onload="InitEvent()" class="wrapper">
+        <header>
+            <nav> <!--navigation-->
+                <div class="row">
+                    <img src="resources/img/logo-white.png" alt="Omnifood logo" class="logo">
+                    <img src="resources/img/logo.png" alt="Omnifood logo" class="logo-black">
+                    <ul class="main-nav js--main-nav">
+                        <!--ul for un** list-->
+                        <li><a href = "#recommend-page">Recommend</a></li>
+                        <!--li for list-->
+                        <li><a href = "#order-page">Order</a></li>
+                        <li><a href = "#review-page">Review</a></li>
+                        <li><a href="https://columbiacchw1.auth.us-east-1.amazoncognito.com/login?redirect_uri=https://s3.amazonaws.com/diningrestaurant2/index.html&response_type=code&client_id=1pv4jeul0797b5l7ie56ei21j5" id = "login">Log in</a></li>
+                    </ul>
+                    <a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
+                </div>
+            </nav>
+
+            <!--can write some intro here-->
+            <div class="hero-text-box">
+                <h1>Wanna get awesome food?<br>Come to us!</h1> <!--br means a break-->
+                <a class="btn btn-full js--scroll-to-start" href="#">Personal recommendation</a>
+                <a href="#order-page" class="btn btn-ghost" >Quick order</a>
+            </div>
+        
+        </header>
+        
+        <section class="section-features js--section-features" id="recommend-page">
+            <div class="row">
+                <h2>Get your favorite food &mdash; for your own preference.</h2>
+                <p class="long-copy">
+                    Hello, we're cloud computing team of Haoran Guo, Minghui Li, Junyi Chen, Yamei Zhu. We'd like to know what is your favoraite restaurant. Tell me your prefernece and let us take care of recommending restaurants. We're really good at it, we promise!
+                </p>
+            </div>
+            <div>
+            <form id = "form1">
+                <ul class="form-style-1">
+                    <li><label>Tell us what you want!<span class="required">*</span></label><input id="input_form" type="text" name="message" class="field-divided" placeholder="message"/></li>
+                    <li>
+                        <input id="submit_input" type="submit" value="Submit"/>
+                    </li>
+                </ul>
+            </form>
+            </div>
+            <div class="row js--wp-1">
+                <div id="results" class="form-style-1"></div>
+            </div>
+            
+        </section>
+        <section id="order-page">
+            <div class="row">
+                <h2>
+                    choose and order
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col span-1-of-3">
+                    <div class="plan-box js--wp-2">
+                        <div>
+                            <h3 id = "rname1">Happy Hot Hunan</h3>
+                            <p class="plan-price">$$</p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li><i class="icon ion-location">969 Amsterdam Ave, New York, NY 10025</i></li><br>
+                                <li id="dish1" style = "margin: auto auto 5px auto"><i class="icon ion-pizza">&nbsp&nbsp&nbspHunan Noodle Soup</i></li><br>
+                                <div class ="change-goods-num">
+                                    <a href= "#change-goods-num" class = "num-reduce" id = "num-reduce1"><i>-</i></a>
+                                    <input type="text" value="1" class = "input-num" id = "input-num1">
+                                    <a href= "#change-goods-num" class = "num-add" id = "num-add1"><i>+</i></a>
+                                </div> 
+                                <li id="dish2" style = "margin: 30px auto 5px auto"><i class="icon ion-pizza">&nbsp&nbspThree Pepper Chicken</i></li><br>
+                                <div class ="change-goods-num">
+                                    <a href= "#change-goods-num" class = "num-reduce" id = "num-reduce2"><i>-</i></a>
+                                    <input type="text" value="1" class = "input-num" id = "input-num2">
+                                    <a href= "#change-goods-num" class = "num-add" id = "num-add2"><i>+</i></a>
+                                </div> 
+                            </ul>
+                        </div>
+                        <div>
+                            <a href="#plan-box js--wp-1" class="btn btn-ghost" id = "order1">order now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col span-1-of-3">
+                    <div class="plan-box js--wp-1">
+                        <div>
+                            <h3 id = "rname2">Masala Club</h3>
+                            <p class="plan-price">$$</p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li><i class="icon ion-location">254 W 108th St, New York, NY 10025</i></li><br>
+                                <li style = "margin: auto auto 5px auto"><i class="icon ion-pizza">&nbsp&nbsp&nbspChicken Tikka Masala</i></li><br>
+                                <div class ="change-goods-num">
+                                    <a href= "#change-goods-num" class = "num-reduce" id = "num-reduce3"><i>-</i></a>
+                                    <input type="text" value="1" class = "input-num" id = "input-num3">
+                                    <a href= "#change-goods-num" class = "num-add" id = "num-add3"><i>+</i></a>
+                                </div> 
+                                <li style = "margin: 30px auto 5px auto"><i class="icon ion-pizza">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMasala Dosa</i></li><br>
+                                <div class ="change-goods-num">
+                                    <a href= "#change-goods-num" class = "num-reduce" id = "num-reduce4"><i>-</i></a>
+                                    <input type="text" value="1" class = "input-num" id = "input-num4">
+                                    <a href= "#change-goods-num" class = "num-add" id = "num-add4"><i>+</i></a>
+                                </div> 
+                            </ul>
+                        </div>
+                        <div>
+                            <a href="#plan-box js--wp-2" class="btn btn-ghost" id = "order2">order now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col span-1-of-3">
+                    <div class="plan-box js--wp-3">
+                        <div>
+                            <h3 id = "rname3">Five Guys</h3>
+                            <p class="plan-price">$$</p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li><i class="icon ion-location">296 Bleecker St, New York, NY 10014</i></li><br>
+                                <li style = "margin: auto auto 5px auto"><i class="icon ion-pizza">&nbsp&nbsp&nbspCheese Dog</i></li><br>
+                                <div class ="change-goods-num">
+                                    <a href= "#change-goods-num" class = "num-reduce" id = "num-reduce5"><i>-</i></a>
+                                    <input type="text" value="1" class = "input-num" id = "input-num5">
+                                    <a href= "#change-goods-num" class = "num-add" id = "num-add5"><i>+</i></a>
+                                </div> 
+                                <li style = "margin: 30px auto 5px auto"><i class="icon ion-pizza">&nbsp&nbsp&nbspCheese Veggie Sandwich</i></li><br>
+                                <div class ="change-goods-num">
+                                    <a href= "#change-goods-num" class = "num-reduce" id = "num-reduce6"><i>-</i></a>
+                                    <input type="text" value="1" class = "input-num" id = "input-num6">
+                                    <a href= "#change-goods-num" class = "num-add" id = "num-add6"><i>+</i></a>
+                                </div> 
+                            </ul>
+                        </div>
+                        <div>
+                            <a href="#plan-box js--wp-3" class="btn btn-ghost" id = "order3">order now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="review-page">
+            <div class="row">
+                <h2>
+                    Choose a resraurant and give us stars!
+                </h2>              
+                <div>
+                    <select style = "font-size: 18px;" id = "mySelect">
+                        <option value="1">Happy Hot Hunan</option>
+                        <option value="2">Szechuan Garden</option>
+                        <option value="3">Junzi Kitchen</option>
+                        <option value="4">Xi'an Famous Foods</option>                        
+                        <option value="5">Roti Roll Bombay Frankie</option>
+                        <option value="6">Masala Club</option>
+                        <option value="7">Aangan</option>
+                        <option value="8">Shake Shack</option>
+                        <option value="9">Five Guys</option>
+                        <option value="10">McDonald's</option>
+                    </select>
+                    <table id="tblMain">
+                    <tr><td>&#9734</td><td>&#9734</td><td>&#9734</td><td>&#9734</td><td>&#9734</td></tr>
+                    </table>
+                    <div id = "score" style="margin-left:20px; margin-top:7px;float:left;" ></div>
+                </div>
+            </div>
+            <div class="row" style="margin:100px auto;">
+                <h2>
+                    please upload images below
+                </h2>
+                 <div>
+                    <input id="photoupload" type="file" accept="image/*"/>
+                    <label for="photoupload">Choose a file</label>
+                    <input id = "addphoto" type="submit" value="Add Photo"/>                 
+                </div>
+            </div>
+            <div class="row">
+                <h2>
+                    please write reviews below
+                </h2>
+            </div>
+            <form id = "form2">
+                <div class="form-group" style="width:800px; height:300px; margin:0 auto;">
+                    <textarea class="form-control" rows="30" name = "reviews" style="height:300px;"></textarea>
+                    <input class="btn btn-ghost" type="submit" style="margin:20px 340px auto" value="Submit"/>
+                </div>
+            </form>
+        </section>
+        <section></section>  
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="vendors/js/jquery.waypoints.min.js"></script>
+        <script src="http://maps.google.com/maps/api/js"></script>
+        
+        <script src="resources/js/script.js" ></script>   
+        <script src="resources/js/gmaps.js"></script>
+        
+    </body>
+    
+    
+    
+</html>
+
