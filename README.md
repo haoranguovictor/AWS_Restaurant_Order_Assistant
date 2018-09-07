@@ -7,3 +7,5 @@
 (b) Intelligent Review System: Users upload photos \/ submit text review, AWS Comprehend \& Rekonition do sentiment analysis.
 
 (c) Online Oredering: Allow users to choose restaurant and dishes from front end. SNS used to send message to restaurant owners.
+
+Please see /project_report for details.
