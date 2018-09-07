@@ -8,6 +8,6 @@
 
 (c) Online Oredering: Allow users to choose restaurant and dishes from front end. SNS used to send message to restaurant owners.
 
-Please see /project_report for details.
+Please see /project_report.pdf for details.
 
 Core codes in /Lambda_functions and /resources/js
