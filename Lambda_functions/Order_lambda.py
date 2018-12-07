@@ -1,7 +1,6 @@
 import boto3
 from botocore.exceptions import ClientError
 def lambda_handler(event, context):
-    # TODO implement
     # Data structure:
     # "{"rname":"1","dishes":{"dish1":"dish1","amount1":2,"dish2":"dish2","amount2":1}}"
     # SQS loading
