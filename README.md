@@ -4,9 +4,9 @@
 
 (a) Restaurant Recommendation Chatbot: Built a chatbot with Lex, ask and gather user data. Make recommendations through ElasticSearch. Data stored in DynamoDB. 
 
-(b) Intelligent Review System: Users upload photos \/ submit text review, AWS Comprehend \& Rekonition do sentiment analysis.
+(b) Intelligent Review System: Users upload photos \/ submit text review, AWS Comprehend \& Rekognition do sentiment analysis.
 
-(c) Online Oredering: Allow users to choose restaurant and dishes from front end. SNS used to send message to restaurant owners.
+(c) Online Ordering: Allow users to choose restaurant and dishes from front end. SNS used to send message to restaurant owners.
 
 Please see /project_report.pdf for details.
 
